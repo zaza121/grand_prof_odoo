@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<template id="index">
+		<t t-call="website.layout">
+			<t t-set="title">Je les ai pas baisees</t>
+		   	<div class="oe_structure">
+		   		<div class="container">
+
+		   			<t t-foreach="exs" t-as="ex">
+				    	<li><a t-attf-href="/academy/{{ slug(ex) }}"> <t t-esc="ex.nom" /> </a></li>
+					</t>
+
+		   		</div>
+		   	</div>
+		</t>
+	</template>
+
+	<template id="details">
+		<t t-call="website.layout">
+			<t t-set="title">Details</t>
+		   	<div class="oe_structure"/>
+		   	<div class="oe_structure">
+		   		<section class="s_title">
+			        <div class="container">
+			          	<div class="row">
+			            	<div class="col-md-12">
+			              		<h1 class="text-center">Proces verbal Facile</h1>
+			              		<h3 class="text-center text-muted">Et si vous n'aviez plus besoin de vous deplacer&amp;nbsp;</h3>
+			            	</div>
+			         	</div>
+			        </div>
+			     </section>
+		   		<div class="container">
+				    <h3 t-field="choosed.nom" />
+				    <p>Last modified: <i t-field="choosed.write_date" t-options='{"widget": "relative"}'/></p>
+				    <div t-field="choosed.details" />
+		   		</div>
+		   	</div>
+		   	<div class="oe_structure"/>
+		</t>
+	</template>
+
+	<template id="nouveau">
+		<t t-call="website.layout">
+			<t t-set="title">Nouvelle petite</t>
+		   	<div class="oe_structure"/>
+		   	<div class="oe_structure">
+
+		   		<div>
+                    <form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-editable-form="false">
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="contact_name">Votre nom</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field">
+                            <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="partner_name">Your Company</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control o_website_form_input" name="partner_name" required="" t-att-value="request.params.get('partner_name', '')"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required">
+                            <label class="col-md-3 col-sm-4 control-label" for="name">Subject</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="description">Your Question</label>
+                            <div class="col-md-7 col-sm-8">
+                                <textarea class="form-control o_website_form_input" name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                <span class="btn btn-primary btn-lg o_website_form_send">Send</span>
+                                <span id="o_website_form_result"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+		   	</div>
+		   	<div class="oe_structure"/>
+		</t>
+	</template>
+
+	<template id="index_colis">
+		<t t-call="website.layout">
+			<t t-set="title">Nouvelle commande</t>
+		   	<div class="oe_structure"/>
+		   	<div class="oe_structure">
+		   		<section class="s_title">
+			        <div class="container">
+			          	<div class="row">
+			            	<div class="col-md-12">
+			              		<h1 class="text-center">Hello world!</h1>
+			              		<h3 class="text-center text-muted">Et si on apprenais a faire des forms dans odoo ?</h3>
+			            	</div>
+			            	<div>
+
+			            		<div class="form-group form-field o_website_form_required_custom">
+		                            <label class="col-md-2 col-sm-2" for="contact_name">Depart</label>
+		                            <div class="col-md-4 col-sm-4">
+		                                <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+		                            </div>
+		                            <label class="col-md-2 col-sm-2" for="contact_name">Destination</label>
+		                            <div class="col-md-4 col-sm-4">
+		                                <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+		                            </div>
+		                        </div>
+
+			                    <form action="/petites_form/" method="post" data-model_name="tuto_odoo.petites" data-success_page="/academy/academy/" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-editable-form="false">
+			                        <div class="form-group form-field o_website_form_required_custom">
+			                            <label class="col-md-3 col-sm-4 control-label" for="contact_name">Your Name</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <input type="text" class="form-control o_website_form_input" name="nom" t-att-value="request.params.get('nom', '')" required=""/>
+			                            </div>
+			                        </div>
+			                        <div class="form-group form-field">
+			                            <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <input type="text" class="form-control o_website_form_input" name="details" t-att-value="request.params.get('details', '')"/>
+			                            </div>
+			                        </div>
+			                        <!-- <div class="form-group form-field o_website_form_required_custom">
+			                            <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')"/>
+			                            </div>
+			                        </div>
+			                        <div class="form-group form-field o_website_form_required_custom">
+			                            <label class="col-md-3 col-sm-4 control-label" for="partner_name">Your Company</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <input type="text" class="form-control o_website_form_input" name="partner_name" required="" t-att-value="request.params.get('partner_name', '')"/>
+			                            </div>
+			                        </div>
+			                        <div class="form-group form-field o_website_form_required">
+			                            <label class="col-md-3 col-sm-4 control-label" for="name">Subject</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')"/>
+			                            </div>
+			                        </div>
+			                        <div class="form-group form-field o_website_form_required_custom">
+			                            <label class="col-md-3 col-sm-4 control-label" for="description">Your Question</label>
+			                            <div class="col-md-7 col-sm-8">
+			                                <textarea class="form-control o_website_form_input" name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+			                            </div>
+			                        </div> -->
+			                        <div class="form-group">
+			                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+			                                <span class="btn btn-primary btn-lg o_website_form_send">Send</span>
+			                                <span id="o_website_form_result"/>
+			                            </div>
+			                        </div>
+			                    </form>
+			                </div>
+			         	</div>
+			        </div>
+			     </section>
+		   	</div>
+		   	<div class="oe_structure"/>
+		</t>
+	</template>
+
+</odoo>

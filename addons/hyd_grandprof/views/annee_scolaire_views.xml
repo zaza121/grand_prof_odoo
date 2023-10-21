@@ -1,0 +1,42 @@
+<odoo>
+
+    <record id="annee_scolaire_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.annee_scolaire.tree</field>
+        <field name="model">hyd_examen.annee_scolaire</field>
+        <field name="arch" type="xml">
+            
+            <tree string="Annee scolaire" default_order="name" editable="bottom">
+                <field name="name"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="status"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="annee_scolaire_search_view">
+        <field name="name">hyd_examen.annee_scolaire.search</field>
+        <field name="model">hyd_examen.annee_scolaire</field>
+        <field name="arch" type="xml">
+            <search string="Recherche des annee scolaires">
+                <field name="name"/>
+                <field name="status"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="annee_scolaire_action_view">
+        <field name="name">annee_scolaires</field>
+        <field name="res_model">hyd_examen.annee_scolaire</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_configuration_scolarite"
+        sequence="20"
+        id="examen_root_configuration_scolarite_annee_scolaire"
+        name="annee_scolaires"
+        action="annee_scolaire_action_view" />
+
+</odoo>

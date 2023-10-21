@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_print_bulletin_wizard_view" model="ir.ui.view">
+        <field name="name">Impression Bulletin de Note</field>
+        <field name="model">print.bulletin.wizard</field>
+        <field name="arch" type="xml">
+            <form string="SupplierInfo wizard">
+                <p>
+                    Selectionnez l,examen et les eleves dont les nulletins doivent etre imprimes?
+                </p>
+                <group>
+                    <group>
+                        <field name="examen_id" required="1"/>
+                    </group>
+                    <group>
+                        <field name="eleve_ids" required="1" widget="many2many_tags"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_bulletin"
+                        string="Imprimer"
+                        type="object"
+                        data-hotkey="q"
+                        class="btn-primary"/>
+                    <button string="Annuler"
+                        class="btn-secondary"
+                        special="cancel" data-hotkey="z" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="print_bulletin_wizard_action" model="ir.actions.act_window">
+        <field name="name">Imprimer Bulletin de Note</field>
+        <field name="res_model">print.bulletin.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_print_bulletin_wizard_view"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

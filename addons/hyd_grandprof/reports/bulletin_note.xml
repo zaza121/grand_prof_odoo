@@ -1,0 +1,219 @@
+<odoo>
+
+	<report
+	    id="report_bulletin_note"
+	    model="hyd_examen.candidature"
+	    string="Bulletin de note"
+	    report_type="qweb-pdf"
+	    name="hyd_examen.bulletin_note_template"
+	    file="hyd_examen.bulletin_note_template" />
+
+	<template id="bulletin_note_template" name="Bulletin Note Template Report">
+      <t t-foreach="docs" t-as="o">
+          <t t-call="hyd_examen.bulletin_note_template_document" />
+      </t>
+  </template>
+
+	<template id="bulletin_note_template_document">
+	    <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+            		<t t-set="exam" t-value="o,examen_line_id" />
+								<t t-set="eleve" t-value="o.eleve_id" />
+								<!-- <t t-set="infos" t-value="eleve.get_bulletin_info(exam.id)" /> -->
+
+                <div class="page">
+
+                	<style>
+
+                      .table-bordered-black th,  .table-bordered-back td {border: 1px solid #141f1e;}
+
+                	</style>
+
+                  <p class="mb-0" style="text-align:center">BULLETIN DE NOTE DU PREMIER TRIMESTRE</p>
+
+					        <p class="mb-1" style="text-align:center">Annee scolaire :2021/2022</p>
+
+
+					<table class="table table-borderless" >
+						<tbody>
+							<tr>
+								<td rowspan="4" class="border border-dark" style="width: 180px;">
+									<img t-if="eleve.image_1920" t-att-src="image_data_uri(eleve.image_1920)" alt="Logo" style="width:100%;"/>
+								</td>
+								<td colspan="4"></td>
+							</tr>
+							<tr>
+								<td class="border border-dark"><strong>NOM: </strong>SAKENG TADJONG</td>
+								<td class="border border-dark"><strong>Né(e) le: </strong>/ a /</td>
+								<td class="border border-dark"><strong>Red: </strong>non</td>
+								<td class="border border-dark"></td>
+							</tr>
+							<tr>
+								<td class="border border-dark"><strong>Titulaire: </strong>Mr X</td>
+								<td class="border border-dark">Sexe: F. ; ; ;ID: 21F1252</td>
+								<td class="border border-dark">Classe: 1 ere D</td>
+								<td class="border border-dark">Eff: 58</td>
+							</tr>
+							<tr>
+								<td colspan="4"></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-sm table-bordered-back" style="padding-top:2rem;">
+					  <!-- <thead>
+							<tr class="table-active text-center">
+								<td rowspan="2" colspan="2" >Matiere    <span t-esc="exam" /></td>
+								<t t-foreach="data['header_exam']" t-as="code">
+									<td t-att-colspan="6 if code_last else 1"><span t-esc="code" /></td>
+								</t>
+							</tr>
+							<tr class="table-active text-center">
+								<t t-foreach="data['header_exam']" t-as="code"><td>Moy</td></t>
+								<td>Coef</td>
+								<td>M C</td>
+								<td>Rang</td>
+								<td>Compétence</td>
+								<td>Obs</td>
+							</tr>
+						</thead> -->
+						<!-- <tbody>
+							<t t-foreach="infos['notes']" t-as="gnote">
+								<tr t-foreach="gnote['notes']" t-as="note">
+									<td class="table-active"></td>
+									<td>
+									<p t-esc="note['matiere']" />
+									<p t-esc="note['enseignant']" />
+									</td>
+									<td><span t-esc="note['moyenne']" /></td>
+									<td><span t-esc="note['coef']" /></td>
+									<td><span t-esc="note['total']" /></td>
+									<td>12 ex</td>
+									<td><span t-esc="note['objectif']" /></td>
+									<td><span t-esc="note['observation']" /></td>
+								</tr>
+								<tr>
+									<td class="table-active" colspan="2"><span t-esc="gnote['group']" /></td>
+									<td class="table-active"><span t-esc="gnote['g_moyenne']" /></td>
+									<td class="table-active">09.50</td>
+									<td class="table-active"><span t-esc="gnote['g_moyenne']" /></td>
+									<td class="table-active"><span t-esc="gnote['g_coef']" /></td>
+									<td class="table-active"><span t-esc="gnote['g_mc']" /></td>
+									<td colspan="3"></td>
+								</tr>
+							</t>
+							<tr>
+								<td class="table-active" colspan="2">Moyenne Général</td>
+								<td class="table-active">09.33</td>
+								<td class="table-active">09.33</td>
+								<td class="table-active"><span t-esc="infos['gen_moyenne']" /></td>
+								<td colspan="6"></td>
+							</tr>
+						</tbody> -->
+					</table>
+
+					<table class="table table-sm table-bordered-back" style="padding-top:2rem;">
+						<tbody>
+							<tr class="table-active">
+								<td rowspan="3" style="width:6px">
+								<p>D<br/>
+								i<br/>
+								s<br/>
+								c</p>
+								</td>
+								<td colspan="3" style="width:479px">Rappel</td>
+								<td>ABJ</td>
+								<td>ABJN</td>
+								<td colspan="4">Appréciation discipline</td>
+							</tr>
+							<tr>
+								<td class="table-active" style="width:251px">Retards</td>
+								<td class="table-active">Convoc</td>
+								<td class="table-active">Mise a pied</td>
+								<td class="table-active">Trim 1</td>
+								<td class="table-active">Trim1</td>
+								<td colspan="4" rowspan="2">/</td>
+							</tr>
+							<tr>
+								<td style="width:251px">
+								<p>0</p>
+								</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-sm table-bordered-back" style="padding-top:2rem;">
+						<tbody>
+							<tr class="table-active">
+								<td rowspan="3">
+								  <p>t<br/>r<br/>a<br/>v</p>
+								</td>
+								<td>
+								<p>Moy. Gen.</p>
+								</td>
+								<td colspan="2">
+								<p>Moy 1er / Dern</p>
+								</td>
+								<td colspan="3">Moy</td>
+								<td colspan="3">Rang</td>
+								<td>Appreciation travail</td>
+							</tr>
+							<tr>
+								<td rowspan="2" style="width:6px">08.29</td>
+								<td class="table-active">
+								<p>1 er</p>
+								</td>
+								<td class="table-active">Dern</td>
+								<td class="table-active">1 eva</td>
+								<td class="table-active">2 eva</td>
+								<td class="table-active">TRIM1</td>
+								<td class="table-active">1 eva</td>
+								<td class="table-active">2 eva</td>
+								<td class="table-active">TRIM1</td>
+								<td rowspan="2">Mediocre</td>
+							</tr>
+							<tr>
+								<td>14.14</td>
+								<td>07.52</td>
+								<td>09.50</td>
+								<td>08.57</td>
+								<td>09.48</td>
+								<td>39 e</td>
+								<td>28 e</td>
+								<td>34 e</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-sm table-bordered-back" style="padding-top:2rem;">
+						<tbody>
+							<tr class="table-active">
+								<td>Décision</td>
+								<td>Censeur</td>
+								<td>Proviseur</td>
+							</tr>
+							<tr>
+								<td>;</td>
+								<td rowspan="3">09.33</td>
+								<td rowspan="3">09.48</td>
+							</tr>
+							<tr>
+								<td class="table-active">Visa des parents</td>
+							</tr>
+							<tr>
+								<td>;</td>
+							</tr>
+						</tbody>
+					</table>
+
+                </div>
+            </t>
+	    </t>
+	</template>
+
+</odoo>

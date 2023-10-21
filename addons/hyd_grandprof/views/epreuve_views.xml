@@ -1,0 +1,138 @@
+<odoo>
+
+    <record id="epreuve_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.epreuve.tree</field>
+        <field name="model">hyd_examen.epreuve</field>
+        <field name="arch" type="xml">
+            
+            <tree string="Epreuves" >
+                <field name="name"/>
+                <field name="examen_id"/>
+                <field name="classe_id"/>
+                <field name="cours_id"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="epreuve_search_view">
+        <field name="name">hyd_examen.epreuve.search</field>
+        <field name="model">hyd_examen.epreuve</field>
+        <field name="arch" type="xml">
+            <search string="Recherche des epreuves">
+                <field name="name"/>
+                <field name="examen_id"/>
+                <field name="classe_id"/>
+                <field name="cours_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="epreuve_view_calendar" model="ir.ui.view">
+        <field name="name">hyd_examen.epreuve.calendar</field>
+        <field name="model">hyd_examen.epreuve</field>
+        <field name="arch" type="xml">
+            <calendar string="Emploi du temps"
+                       date_start="date_debut"
+                       date_stop="date_fin"
+                       event_open_popup="false"
+                       mode="month"
+                       color="classe_id"
+                       quick_add="False">
+                 <field name="cours_id"/>
+                 <field name="examen_id"/>
+            </calendar>
+        </field>
+      </record>
+
+    <record id="epreuve_form_view" model="ir.ui.view">
+        <field name="name">hyd_examen.epreuve.form</field>
+        <field name="model">hyd_examen.epreuve</field>
+        <field name="arch" type="xml">
+            
+            <form string="Formulaire des epreuves">
+                <header>
+                        <!-- <button string="Chat" class="btn btn-primary o_employee_chat_btn" attrs="{'invisible': [('user_id','=', False)]}"/>
+                        <button name="129" string="Launch Plan" type="action" groups="hr.group_hr_manager"/> -->
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <!-- <button id="hr_presence_button" class="oe_stat_button" disabled="1" attrs="{'invisible': ['|', ('last_activity', '=', False), ('user_id', '=', False)]}">
+                            <div role="img" class="fa fa-fw fa-circle text-success o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}" aria-label="Available" title="Available"/>
+                            <div role="img" class="fa fa-fw fa-circle text-warning o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'to_define')]}" aria-label="Away" title="Away"/>
+                            <div role="img" class="fa fa-fw fa-circle text-danger o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'absent')]}" aria-label="Not available" title="Not available"/>
+
+                            <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '=', 'present')]}">
+                                <span class="o_stat_text">
+                                    Not Connected
+                                </span>
+                            </div>
+                            <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}">
+                                <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '=', False)]}">
+                                    <field name="last_activity_time"/>
+                                </span>
+                                <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '!=', False)]}">
+                                    <field name="last_activity"/>
+                                </span>
+                                <span class="o_stat_text">Present Since</span>
+                            </div>
+                        </button> -->
+                    </div>
+                    <!-- <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/> -->
+                    <!-- <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image_128&quot;}"/> -->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nom" required="True"/>
+                        </h1>
+                        <h2>
+                            <field name="classe_id" placeholder="Classe" required="True"/>
+                        </h2>
+                        <h2>
+                            <field name="cours_id" placeholder="Cours" required="True"/>
+                        </h2>
+                        <!-- <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="hr.group_hr_manager"/> -->
+                    </div>
+                    <group>
+                        <group>
+                            <field name="objectif" />
+                        </group>
+                        <group>
+                            <field name="examen_id" />
+                            <field name="date_debut" />
+                            <field name="date_fin" />
+                        </group>        
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="note_ids">
+                                <tree editable="bottom">
+                                    <field name="eleve_id" />
+                                    <field name="salle_id" />
+                                    <field name="valeur" />
+                                    <field name="rang" />
+                                    <field name="name" />
+                                    <field name="epreuve_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="epreuve_action_view">
+        <field name="name">Epreuve</field>
+        <field name="res_model">hyd_examen.epreuve</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_result"
+        sequence="20"
+        id="examen_root_result_epreuve"
+        name="Epreuve"
+        action="epreuve_action_view" />
+
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+
+        <record id="ex_1" model="tuto_odoo.petites">
+            <field name="nom">Mballa linda</field>
+        </record>
+        <record id="ex_2" model="tuto_odoo.petites">
+            <field name="nom">cyrielle de ngoa</field>
+        </record>
+        <record id="ex_3" model="tuto_odoo.petites">
+            <field name="nom">NANTIA Melissa</field>
+        </record>
+        <record id="ex_4" model="tuto_odoo.petites">
+            <field name="nom">Ametissa Aminatou</field>
+        </record>
+
+</odoo>

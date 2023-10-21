@@ -1,0 +1,95 @@
+<odoo>
+
+    <record id="candidature_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.candidature.tree</field>
+        <field name="model">hyd_examen.candidature</field>
+        <field name="arch" type="xml">
+            
+            <tree string="Candidatures">
+                <field name="name"/>
+                <field name="eleve_id"/>
+                <field name="salle_id"/>
+                <field name="examen_line_id"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="candidature_search_view">
+        <field name="name">hyd_examen.candidature.search</field>
+        <field name="model">hyd_examen.candidature</field>
+        <field name="arch" type="xml">
+            <search string="Recherche de candidature">
+                <field name="name"/>
+                <field name="eleve_id"/>
+                <field name="examen_line_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="candidature_form_view" model="ir.ui.view">
+        <field name="name">hyd_examen.candidature.form</field>
+        <field name="model">hyd_examen.candidature</field>
+        <field name="arch" type="xml">
+            
+            <form string="Formulaire des candidatures">
+                <sheet>
+                    <div>
+                        <!-- <h2><label for="code" /></h2>
+                        <h2><field name="code" /></h2> -->
+                    </div>
+                    <group colspan="4" col="4">
+                        <group colspan="2">
+                            <field name="name" />
+                        </group>
+                        <group colspan="2">
+                            <field name="eleve_id" />
+                            <field name="salle_id" />
+                            <field name="examen_line_id" />
+                        </group>
+                    </group>
+                    <!-- <notebook>
+                        <page string="Types de contrat">
+                            <field name="types_contrat"/>
+                        </page>
+                        <page string="Contrats">
+                            <field name="contracts"/>
+                        </page>
+                    </notebook> -->
+                </sheet>
+                <!-- <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div> -->
+            </form>
+
+        </field>
+    </record>
+
+    <!-- <record id="candidature_graph_view" model="ir.ui.view">
+        <field name="name">hyd_examen.candidature.graph</field>
+        <field name="model">hyd_examen.candidature</field>
+        <field name="arch" type="xml">
+
+            <graph string="Repartition masse salariale" type="line">
+                <field name="code" interval="col"/>
+                <field name="masse" type="measure"/>
+            </graph>
+
+        </field>
+    </record> -->
+
+    <record model="ir.actions.act_window" id="candidature_action_view">
+        <field name="name">Candidatures</field>
+        <field name="res_model">hyd_examen.candidature</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_result"
+        sequence="40"
+        id="examen_root_result_candidature"
+        name="Candidatures"
+        action="candidature_action_view" />
+
+</odoo>

@@ -1,5 +1,7 @@
-postgresql/
+source/
+filestore/
+
 etc/odoo-server.log
-etc/addons/
-etc/sessions/
-etc/filestore/
+
+*.pyc
+*DS_Store

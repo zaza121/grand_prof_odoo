@@ -1,0 +1,64 @@
+<odoo>
+
+    <record id="matiere_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.matiere.tree</field>
+        <field name="model">hyd_examen.matiere</field>
+        <field name="arch" type="xml">
+            
+            <tree string="Matieres" >
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="matiere_search_view">
+        <field name="name">hyd_examen.matiere.search</field>
+        <field name="model">hyd_examen.matiere</field>
+        <field name="arch" type="xml">
+            <search string="Recherche de matiere">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="matiere_form_view" model="ir.ui.view">
+        <field name="name">hyd_examen.matiere.form</field>
+        <field name="model">hyd_examen.matiere</field>
+        <field name="arch" type="xml">
+            
+            <form string="Formulaire des matiere">
+                <head></head>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                        </group>
+                        <group>
+                            <field name="description" />
+                        </group>        
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="matiere_action_view">
+        <field name="name">Matiere</field>
+        <field name="res_model">hyd_examen.matiere</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_configuration_scolarite"
+        sequence="10"
+        id="examen_root_configuration_scolarite_matiere"
+        name="Matiere"
+        action="matiere_action_view" />
+
+</odoo>

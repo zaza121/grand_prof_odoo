@@ -1,0 +1,40 @@
+<odoo>
+
+  
+  <record id="petites_tree" model="ir.ui.view">
+    <field name="name">tuto_odoo.petites.form</field>
+    <field name="model">tuto_odoo.petites</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="nom"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="petites_form" model="ir.ui.view">
+    <field name="name">tuto_odoo.petites.form</field>
+    <field name="model">tuto_odoo.petites</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <label for="nom"/> <field name="nom"/>
+          <label for="details"/>
+          <field name="details"/>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_tuto_odoo_petites" model="ir.actions.act_window">
+    <field name="name">Les petites</field>
+    <field name="res_model">tuto_odoo.petites</field>
+  </record>
+
+  <menuitem sequence="0" id="petites" name="Petites"/>
+  <menuitem id="menu_petites_content" parent="petites"
+            name="Petites Contenu"/>
+  <menuitem id="menu_academy_content_lespetites"
+            parent="menu_petites_content"
+            action="action_tuto_odoo_petites"/>
+
+</odoo>

@@ -1,0 +1,20 @@
+# from . import categorie_salariale
+# from . import echelon_salariale
+# from . import grille_salaire
+# from . import hr_contract
+# from . import hr_contract_type
+# from . import eleve
+# from . import matiere
+# from . import candidature
+# from . import cycle
+# from . import classe
+# from . import salle
+# from . import cours
+# from . import epreuve
+# from . import note
+# from . import composition
+# from . import examen
+# from . import annee_scolaire
+# from . import examen_line
+# from . import group_cours
+from . import res_partner

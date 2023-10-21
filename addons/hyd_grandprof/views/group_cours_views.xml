@@ -1,0 +1,103 @@
+<odoo>
+
+    <record id="group_cours_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.group_cours.tree</field>
+        <field name="model">hyd_examen.group_cours</field>
+        <field name="arch" type="xml">
+            
+            <tree string="group_cours" default_order="name">
+                <field name="name"/>
+                <field name="cours_ids"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="group_cours_search_view">
+        <field name="name">hyd_examen.group_cours.search</field>
+        <field name="model">hyd_examen.group_cours</field>
+        <field name="arch" type="xml">
+            <search string="Recherche des group_cours">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="group_cours_form_view" model="ir.ui.view">
+        <field name="name">hyd_examen.group_cours.form</field>
+        <field name="model">hyd_examen.group_cours</field>
+        <field name="arch" type="xml">
+            
+            <form string="Formulaire des groupe de cours">
+                <!-- <field name="active" invisible="1"/>
+                    <field name="user_partner_id" invisible="1"/>
+                    <field name="hr_presence_state" invisible="1"/> -->
+                    <header>
+                        <!-- <button string="Chat" class="btn btn-primary o_employee_chat_btn" attrs="{'invisible': [('user_id','=', False)]}"/>
+                        <button name="129" string="Launch Plan" type="action" groups="hr.group_hr_manager"/> -->
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <!-- <button id="hr_presence_button" class="oe_stat_button" disabled="1" attrs="{'invisible': ['|', ('last_activity', '=', False), ('user_id', '=', False)]}">
+                                <div role="img" class="fa fa-fw fa-circle text-success o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}" aria-label="Available" title="Available"/>
+                                <div role="img" class="fa fa-fw fa-circle text-warning o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'to_define')]}" aria-label="Away" title="Away"/>
+                                <div role="img" class="fa fa-fw fa-circle text-danger o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'absent')]}" aria-label="Not available" title="Not available"/>
+
+                                <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '=', 'present')]}">
+                                    <span class="o_stat_text">
+                                        Not Connected
+                                    </span>
+                                </div>
+                                <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}">
+                                    <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '=', False)]}">
+                                        <field name="last_activity_time"/>
+                                    </span>
+                                    <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '!=', False)]}">
+                                        <field name="last_activity"/>
+                                    </span>
+                                    <span class="o_stat_text">Present Since</span>
+                                </div>
+                            </button> -->
+                        </div>
+                        <!-- <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/> -->
+                        <!-- <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image_128&quot;}"/> -->
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Nom" required="True"/>
+                            </h1>
+                            <h2>
+                                <!-- <field name="matiere_id" placeholder="Matiere" required="True"/> -->
+                            </h2>
+                            <!-- <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="hr.group_hr_manager"/> -->
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sequence" />
+                                <!-- <field name="classe_id" />
+                                <field name="enseignant" />
+                                <field name="coef" /> -->
+                            </group>
+                            <group>
+                                <field name="cours_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="group_cours_action_view">
+        <field name="name">Groupe de cours</field>
+        <field name="res_model">hyd_examen.group_cours</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_configuration_scolarite"
+        sequence="39"
+        id="examen_root_configuration_scolarite_group_cours"
+        name="Groupe de cours"
+        action="group_cours_action_view" />
+
+</odoo>

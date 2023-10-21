@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eleve_default,access eleve default,model_hyd_examen_eleve,,1,1,1,1
+access_matiere_default,access matiere default,model_hyd_examen_matiere,,1,1,1,1
+access_candidature_default,access candidature default,model_hyd_examen_candidature,,1,1,1,1
+access_cycle_default,access cycle default,model_hyd_examen_cycle,,1,1,1,1
+access_classe_default,access classe default,model_hyd_examen_classe,,1,1,1,1
+access_cours_default,access cours default,model_hyd_examen_cours,,1,1,1,1
+access_group_cours_default,access group_cours default,model_hyd_examen_group_cours,,1,1,1,1
+access_salle_default,access salle default,model_hyd_examen_salle,,1,1,1,1
+access_epreuve_default,access epreuve default,model_hyd_examen_epreuve,,1,1,1,1
+access_note_default,access note default,model_hyd_examen_note,,1,1,1,1
+access_composition_default,access composition default,model_hyd_examen_composition,,1,1,1,1
+access_annee_scolaire_default,access annee_scolaire default,model_hyd_examen_annee_scolaire,,1,1,1,1
+access_examen_default,access examen default,model_hyd_examen_examen,,1,1,1,1
+access_examen_line_default,access examen line default,model_hyd_examen_examen_line,,1,1,1,1
+access_print_bulletin_wizard_default,access print_bulletin_wiz default,model_print_bulletin_wizard,,1,1,1,1

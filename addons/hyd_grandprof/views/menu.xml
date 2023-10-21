@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- MENU PARAMETRE DE LA GRILLE SALARIALE -->
+
+        <menuitem
+            id="examen_root"
+            name="Gestion des examens"
+            sequence="50"
+            web_icon="hyd_examen,static/description/icon.png" />
+
+        <menuitem
+            parent="hyd_examen.examen_root"
+            id="examen_root_result"
+            name="Resultats"
+            sequence="10"/>
+
+        <menuitem
+            parent="hyd_examen.examen_root"
+            id="examen_root_configuration"
+            name="Configuration"
+            sequence="50"/>
+
+        <menuitem
+            parent="hyd_examen.examen_root_configuration"
+            id="examen_root_configuration_hr"
+            name="Resources humaines"
+            sequence="10"/>
+
+        <menuitem
+            parent="hyd_examen.examen_root_configuration"
+            id="examen_root_configuration_scolarite"
+            name="Scolarite"
+            sequence="20"/>
+
+        <menuitem
+            parent="hyd_examen.examen_root_configuration_hr"
+            id="examen_root_configuration_hr_enseignants"
+            name="Enseignants"
+            action="hr.open_view_employee_list_my"
+            sequence="5"/>
+
+    </data>
+</openerp>

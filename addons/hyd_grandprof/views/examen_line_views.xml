@@ -1,0 +1,124 @@
+<odoo>
+
+    <record id="examen_line_tree_view" model="ir.ui.view">
+        <field name="name">hyd_examen.examen_line.tree</field>
+        <field name="model">hyd_examen.examen_line</field>
+        <field name="arch" type="xml">
+            
+            <tree string="Examens par classe" default_order="name">
+                <field name="examen_id"/>
+                <field name="classe_id"/>
+                <field name="number_candidat"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="examen_line_search_view">
+        <field name="name">hyd_examen.examen_line.search</field>
+        <field name="model">hyd_examen.examen_line</field>
+        <field name="arch" type="xml">
+            <search string="Recherche des examens par classe">
+                <field name="examen_id"/>
+                <field name="classe_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="examen_line_form_view" model="ir.ui.view">
+        <field name="name">hyd_examen.examen_line.form</field>
+        <field name="model">hyd_examen.examen_line</field>
+        <field name="arch" type="xml">
+            
+            <form string="Formulaire des examens par classe">
+                <header>
+                    <button string="Generer Epreuves" name="generer_epreuves" type="object" class="btn btn-primary o_employee_chat_btn" />
+                    <!-- <button string="Chat" class="btn btn-primary o_employee_chat_btn" attrs="{'invisible': [('user_id','=', False)]}"/>
+                    <button name="129" string="Launch Plan" type="action" groups="hr.group_hr_manager"/> -->
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <!-- <button id="hr_presence_button" class="oe_stat_button" disabled="1" attrs="{'invisible': ['|', ('last_activity', '=', False), ('user_id', '=', False)]}">
+                            <div role="img" class="fa fa-fw fa-circle text-success o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}" aria-label="Available" title="Available"/>
+                            <div role="img" class="fa fa-fw fa-circle text-warning o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'to_define')]}" aria-label="Away" title="Away"/>
+                            <div role="img" class="fa fa-fw fa-circle text-danger o_button_icon" attrs="{'invisible': [('hr_presence_state', '!=', 'absent')]}" aria-label="Not available" title="Not available"/>
+
+                            <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '=', 'present')]}">
+                                <span class="o_stat_text">
+                                    Not Connected
+                                </span>
+                            </div>
+                            <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}">
+                                <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '=', False)]}">
+                                    <field name="last_activity_time"/>
+                                </span>
+                                <span class="o_stat_value" attrs="{'invisible': [('last_activity_time', '!=', False)]}">
+                                    <field name="last_activity"/>
+                                </span>
+                                <span class="o_stat_text">Present Since</span>
+                            </div>
+                        </button> -->
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nom examen" required="True"/>
+                        </h1>
+                        <h2>
+                            <field name="examen_id" placeholder="Parent"/>
+                        </h2>
+                        <h2>
+                            <field name="classe_id" placeholder="Parent"/>
+                        </h2>
+                        <!-- <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="hr.group_hr_manager"/> -->
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date_debut" />
+                            <field name="date_fin" />
+                        </group>
+                        <group>
+                            <field name="number_candidat" />
+                            <field name="salle_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Epreuves">
+                            <field name="epreuve_ids">
+                                <tree>
+                                    <field name="examen_line_id" invisible="1" />
+                                    <field name="cours_id" />
+                                    <field name="examen_id" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Candidats">
+                            <field name="candidature_ids">
+                                <tree>
+                                    <field name="examen_line_id" invisible="1" />
+                                    <field name="eleve_id" />
+                                    <field name="salle_id" />
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="examen_line_action_view">
+        <field name="name">Examens par classe</field>
+        <field name="res_model">hyd_examen.examen_line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="hyd_examen.examen_root_result"
+        sequence="10"
+        id="examen_root_result_examen_line"
+        name="Examens par classe"
+        action="examen_line_action_view" />
+
+</odoo>
